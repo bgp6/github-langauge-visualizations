@@ -1,6 +1,6 @@
 import pandas as pd
 
-ROOT = "./GithubRepoData\/"
+ROOT = "data"
 
 # reading in data
 issue = pd.read_csv(ROOT.format("gh-issue-event.csv"))
