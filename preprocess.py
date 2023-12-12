@@ -4,7 +4,7 @@ ROOT = "./data/{}"
 
 # reading in data
 issue = pd.read_csv(ROOT.format("gh-issue-event.csv"))
-request = pd.read_csv(ROOT.format("gh-pull-request.csv"))
+pull = pd.read_csv(ROOT.format("gh-pull-request.csv"))
 push = pd.read_csv(ROOT.format("gh-push-event.csv"))
 star = pd.read_csv(ROOT.format("gh-star-event.csv"))
 repo = pd.read_csv(ROOT.format("gh-repos-with-language.csv"))
@@ -25,13 +25,13 @@ def add_uid(df, dtype):
     return df
 
 issue = add_uid(issue, "issue")
-request = add_uid(request, "request")
+pull = add_uid(pull, "pull")
 push = add_uid(push, "push")
 star = add_uid(star, "star")
 repo = add_uid(repo, "repo")
 
 # combining the dataframes
-frames = [issue, request, push, star, repo]
+frames = [issue, pull, push, star, repo]
 ret = pd.concat(frames, axis = 1)
 
 # imputing NaNs in dataframe
