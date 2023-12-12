@@ -35,8 +35,8 @@ frames = [issue, request, push, star, repo]
 ret = pd.concat(frames, axis = 1)
 
 # imputing NaNs in dataframe
-# print("Number of NaN:", ret.isna().sum().sum())
-# ret.fillna(0, inplace = True)
+print("Number of NaN:", ret.isna().sum().sum())
+ret.fillna(0, inplace = True)
 
 # extracting name, year, quarter from uid 
 name = []
