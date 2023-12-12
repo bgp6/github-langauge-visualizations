@@ -1,6 +1,6 @@
 import pandas as pd
 
-ROOT = "{}"
+ROOT = "../data/{}"
 
 data = pd.read_csv(ROOT.format("combined_data.csv"))
 
