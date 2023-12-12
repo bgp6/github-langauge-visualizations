@@ -1,13 +1,14 @@
 import pandas as pd
+import pathlib
 
-ROOT = "../data/{}"
+ROOT = pathlib.Path(__file__).parent.parent.resolve().joinpath("data")
 
 # reading in data
-issue = pd.read_csv(ROOT.format("gh-issue-event.csv"))
-pull = pd.read_csv(ROOT.format("gh-pull-request.csv"))
-push = pd.read_csv(ROOT.format("gh-push-event.csv"))
-star = pd.read_csv(ROOT.format("gh-star-event.csv"))
-repo = pd.read_csv(ROOT.format("gh-repos-with-language.csv"))
+issue = pd.read_csv(ROOT.joinpath("gh-issue-event.csv"))
+pull = pd.read_csv(ROOT.joinpath("gh-pull-request.csv"))
+push = pd.read_csv(ROOT.joinpath("gh-push-event.csv"))
+star = pd.read_csv(ROOT.joinpath("gh-star-event.csv"))
+repo = pd.read_csv(ROOT.joinpath("gh-repos-with-language.csv"))
 
 # Add dummy year and quarter to repos count data
 repo["year"] = "2023"
@@ -54,4 +55,4 @@ ret["year"] = year
 ret["quarter"] = quarter
 
 # saving file
-ret.to_csv(ROOT.format("combined_data.csv"))
+ret.to_csv(ROOT.joinpath("combined_data.csv"))
