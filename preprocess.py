@@ -7,6 +7,11 @@ issue = pd.read_csv(ROOT.format("gh-issue-event.csv"))
 request = pd.read_csv(ROOT.format("gh-pull-request.csv"))
 push = pd.read_csv(ROOT.format("gh-push-event.csv"))
 star = pd.read_csv(ROOT.format("gh-star-event.csv"))
+repo = pd.read_csv(ROOT.format("gh-repos-with-language.csv"))
+
+# Add dummy year and quarter to repos count data
+repo["year"] = "2023"
+repo["quarter"] = "3"
 
 # creating an uid (unique identifier) for each entry so we can combine the tables
 def add_uid(df, dtype):
@@ -23,9 +28,10 @@ issue = add_uid(issue, "issue")
 request = add_uid(request, "request")
 push = add_uid(push, "push")
 star = add_uid(star, "star")
+repo = add_uid(repo, "repo")
 
 # combining the dataframes
-frames = [issue, request, push, star]
+frames = [issue, request, push, star, repo]
 ret = pd.concat(frames, axis = 1)
 
 # imputing NaNs in dataframe
