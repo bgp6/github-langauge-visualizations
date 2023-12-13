@@ -18,6 +18,7 @@ data = data.query('year == 2023 and quarter == 3 and name in @LANGUAGES')
 data = data.sort_values(by=["repo"], ascending=False)
 data["issues_per_repo"] = data["issue"] / data["repo"]
 plt.bar(data["name"], data["issues_per_repo"])
-plt.savefig(OUTPUT.joinpath("issues_per_repo.svg"))
+plt.xticks(rotation=45, ha='right')
+plt.savefig(OUTPUT.joinpath("issues_per_repo.svg"), bbox_inches="tight")
 
 print(data)
