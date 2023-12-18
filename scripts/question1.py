@@ -8,6 +8,10 @@ OUTPUT = ROOT.joinpath("output/")
 OUTPUT.mkdir(exist_ok=True)
 DATA_FILE = ROOT.joinpath("data/combined_data.csv")
 
+# Generate combined data if it does not exist
+if not DATA_FILE.is_file():
+    import preprocess
+
 df = pd.read_csv(DATA_FILE)
 # Drop unused columns
 df = df.drop(columns = ["uid", "year", "quarter", "issue", "pull", "push", "star", "norm_issue", "norm_pull", "norm_push", "norm_star", "norm_use"])
@@ -72,5 +76,5 @@ ax.legend(wedges, labels,
 plt.setp(autotexts, size = 8, weight ="bold")
 ax.set_title("Percentage of Repositories on Github by Language")
 
-plt.savefig(OUTPUT.joinpath("question_1.svg"), bbox_inches="tight")
-plt.savefig(OUTPUT.joinpath("question_1.png"), bbox_inches="tight")
+plt.savefig(OUTPUT.joinpath("question_1.svg"), bbox_inches="tight", transparent = True)
+plt.savefig(OUTPUT.joinpath("question_1.png"), bbox_inches="tight", transparent = True)
