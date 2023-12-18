@@ -20,5 +20,6 @@ data["issues_per_repo"] = data["issue"] / data["repo"]
 plt.bar(data["name"], data["issues_per_repo"])
 plt.xticks(rotation=45, ha='right')
 plt.savefig(OUTPUT.joinpath("issues_per_repo.svg"), bbox_inches="tight")
+plt.savefig(OUTPUT.joinpath("issues_per_repo.png"), bbox_inches="tight")
 
 print(data)
