@@ -12,6 +12,9 @@ DATA_FILE = ROOT.joinpath("data/combined_data.csv")
 if not DATA_FILE.is_file():
     import preprocess
 
+# Apply style sheet for dark backgrounds
+plt.style.use('https://github.com/dhaitz/matplotlib-stylesheets/raw/master/pitayasmoothie-dark.mplstyle')
+
 df = pd.read_csv(DATA_FILE)
 # Drop unused columns
 df = df.drop(columns = ["uid", "year", "quarter", "issue", "pull", "push", "star", "norm_issue", "norm_pull", "norm_push", "norm_star", "norm_use"])

@@ -11,6 +11,9 @@ DATA_FILE = ROOT.joinpath("data/combined_data.csv")
 if not DATA_FILE.is_file():
     import preprocess
 
+# Apply style sheet for dark backgrounds
+plt.style.use('https://github.com/dhaitz/matplotlib-stylesheets/raw/master/pitayasmoothie-dark.mplstyle')
+
 LANGUAGES = ["JavaScript", "Python", "Ruby", "Java", "PHP", "C", "C++", "Objective-C", "C#", "Perl", "Go", "CoffeeScript", "TypeScript", "Assembly", "Swift", "Scala", "Lua", "Haskell", "R", "Clojure", "Objective-C++", "Rust", "Erlang", "OCaml", ]
 
 data = pd.read_csv(DATA_FILE)
