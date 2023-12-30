@@ -18,9 +18,13 @@ LANGUAGES = ["JavaScript", "Python", "Ruby", "Java", "PHP", "C", "C++", "Objecti
 
 data = pd.read_csv(DATA_FILE)
 data = data.query('year == 2023 and quarter == 3 and name in @LANGUAGES')
-data = data.sort_values(by=["repo"], ascending=False)
 data["issues_per_repo"] = data["issue"] / data["repo"]
-plt.bar(data["name"], data["issues_per_repo"])
-plt.xticks(rotation=45, ha='right')
+data = data.sort_values(by=["issues_per_repo"])
+
+fig, ax = plt.subplots()
+fig.set_figheight(8)
+barh = ax.barh(data["name"], data["issues_per_repo"])
+ax.bar_label(barh, fmt='%.2f', padding = 2)
+
 plt.savefig(OUTPUT.joinpath("issues_per_repo.svg"), bbox_inches="tight", transparent = True)
 plt.savefig(OUTPUT.joinpath("issues_per_repo.png"), bbox_inches="tight", transparent = True)
