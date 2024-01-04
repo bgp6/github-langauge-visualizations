@@ -28,4 +28,7 @@ top_ten = sorted_data[:10]
 
 print(top_ten)
 
-       
+for lang in top_ten.index:
+    filtered = df.query('name == @lang')
+    print(filtered)
+
