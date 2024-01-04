@@ -12,10 +12,10 @@ if not DATA_FILE.is_file():
     import preprocess
 
 df = pd.read_csv(DATA_FILE)
-df.drop(columns = ["year", "quarter", "repo"], inplace = True)
+df.drop(columns = ["year", "quarter", "repo", "uid", "name"], inplace = True)
 
 sns.set(font_scale = 1)
 svm = sns.heatmap(df.corr(), xticklabels = True, yticklabels = True, annot=True)
 figure = svm.get_figure()
 
-figure.savefig(OUTPUT.joinpath("correlation_heatmap.png"), bbox_inches="tight")
+figure.savefig(OUTPUT.joinpath("correlation_heatmap.png"), bbox_inches="tight", transparent = True)
