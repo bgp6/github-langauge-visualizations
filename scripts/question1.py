@@ -64,7 +64,7 @@ wedges, texts, autotexts = ax.pie(wedgeData.repo,
 # Construct legend labels
 labels = []
 for i in range(0, wedgeData.name.size):
-    labels.append(f"{wedgeData.name[i]} {perc[i]}")
+    labels.append(f"{perc[i]} {wedgeData.name[i]}")
 
 # Add legend
 ax.legend(wedges, labels,
