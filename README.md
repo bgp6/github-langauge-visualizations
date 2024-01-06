@@ -6,7 +6,7 @@ Analyzing GitHub activity and language statistics.
 ### Issues per repository
 ![Bar Chart: Issues per repo](output/issues_per_repo.svg)
 ### Projected usage
-![Placeholder](https://media.giphy.com/media/3o7aTskHEUdgCQAXde/giphy.gif)
+![Scatter plot: Projected usage](output/scatterplot.svg)
 ### Correlation between issues, stars, pulls, and pushes
 ![Heatmap: Correlation](output/correlation_heatmap.svg)
 ## Data Sources
