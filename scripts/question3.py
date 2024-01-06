@@ -39,4 +39,5 @@ for lang in top_ten.index:
             if (year == compare):
                 y = y + row["norm_use"]
         y_values.append(y)
-    print(y_values)
+    plt.scatter(x_values, y_values)
+plt.savefig(OUTPUT.joinpath("scatterplot.png"), bbox_inches="tight", transparent = True)
