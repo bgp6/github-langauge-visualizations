@@ -27,8 +27,16 @@ sorted_data = sorted_data.sort_values(by = "norm_use", ascending=False)
 top_ten = sorted_data[:10]
 
 print(top_ten)
-
+x_values = [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
 for lang in top_ten.index:
     filtered = df.query('name == @lang')
-    print(filtered)
-
+    y_values = []
+    for i in range(len(x_values)):
+        y = 0
+        year = x_values[i]
+        for index, row in filtered.iterrows():
+            compare = row["year"]
+            if (year == compare):
+                y = y + row["norm_use"]
+        y_values.append(y)
+    print(y_values)
