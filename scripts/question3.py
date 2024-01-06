@@ -27,7 +27,7 @@ sorted_data = sorted_data.sort_values(by = "norm_use", ascending=False)
 top_ten = sorted_data[:10]
 
 print(top_ten)
-x_values = [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
+x_values = np.array([2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023])
 for lang in top_ten.index:
     filtered = df.query('name == @lang')
     y_values = []
@@ -39,5 +39,11 @@ for lang in top_ten.index:
             if (year == compare):
                 y = y + row["norm_use"]
         y_values.append(y)
+    y_values = np.array(y_values)
+    a, b = np.polyfit(x_values, y_values, 1)
+    plt.plot(x_values, a * x_values + b)
     plt.scatter(x_values, y_values)
+    
+
+
 plt.savefig(OUTPUT.joinpath("scatterplot.png"), bbox_inches="tight", transparent = True)
