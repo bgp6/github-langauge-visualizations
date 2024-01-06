@@ -25,6 +25,7 @@ for index, row in df.iterrows():
 sorted_data = pd.DataFrame.from_dict(data, orient='index', columns=['norm_use'])
 sorted_data = sorted_data.sort_values(by = "norm_use", ascending=False)
 top_ten = sorted_data[:10]
+plt.style.use(['dark_background'])
 
 print(top_ten)
 x_values = np.array([2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023])
@@ -43,7 +44,6 @@ for lang in top_ten.index:
     a, b = np.polyfit(x_values, y_values, 1)
     plt.plot(x_values, a * x_values + b)
     plt.scatter(x_values, y_values)
-    
 
-
+plt.savefig(OUTPUT.joinpath("scatterplot.svg"), bbox_inches="tight", transparent = True)
 plt.savefig(OUTPUT.joinpath("scatterplot.png"), bbox_inches="tight", transparent = True)
