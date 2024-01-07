@@ -46,10 +46,14 @@ for lang in top_ten.index:
                 y = y + row["norm_use"]
         y_values.append(y)
     y_values = np.array(y_values)
-    a, b = np.polyfit(x_values, y_values, 1)
-    plt.plot(x_values, a * x_values + b)
+
+    coefficients = np.polyfit(x_values, y_values, 1)
+    x_range = np.linspace(2012, 2028, 16)
+    y_range = np.polyval(coefficients, x_range)
+    plt.plot(x_range, y_range)
     plt.scatter(x_values, y_values, label = names[count])
     count = count + 1
+
 
 plt.legend(bbox_to_anchor = (1, 0.8))
 plt.savefig(OUTPUT.joinpath("scatterplot.svg"), bbox_inches="tight", transparent = True)
